@@ -1,6 +1,9 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import MyFavorite from '../views/MyFavorite.vue'
+import BookInformation from '../views/BookInformation.vue'
+import BookItem from '../components/BookItem.vue'
 import NotFound from '../components/NotFound.vue'
 
 Vue.use(VueRouter);
@@ -12,10 +15,19 @@ const routes = [
     component: Home,
   },
   {
-    path: '/about',
-    name: 'About',
-    component: () =>
-      import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    path: '/fav',
+    name: 'MyFavorite',
+    component: MyFavorite
+  },
+  {
+    path: '/book-info',
+    name: 'BookInformation',
+    component: BookInformation
+  },
+  {
+    path: '/test',
+    name: 'BookItem',
+    component: BookItem
   },
   {
     path: '/404',

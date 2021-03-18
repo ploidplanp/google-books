@@ -1,8 +1,8 @@
 <template>
-    <div class="container">
-        <h1>404</h1>
-        <p><i>O OH, THE PAGE YOU REQUEST WAS NOT FOUND :'(</i></p>
-    </div>
+  <div class="container mt-5">
+    <h1>404</h1>
+    <p><i>O OH, THE PAGE YOU REQUEST WAS NOT FOUND :'(</i></p>
+  </div>
 </template>
 
 <script>
