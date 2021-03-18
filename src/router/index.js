@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import MyFavorite from '../views/MyFavorite.vue'
 import BookInformation from '../views/BookInformation.vue'
-import BookItem from '../components/BookItem.vue'
 import NotFound from '../components/NotFound.vue'
 
 Vue.use(VueRouter);
@@ -20,14 +19,9 @@ const routes = [
     component: MyFavorite
   },
   {
-    path: '/book-info',
+    path: '/book-info/:id',
     name: 'BookInformation',
     component: BookInformation
-  },
-  {
-    path: '/test',
-    name: 'BookItem',
-    component: BookItem
   },
   {
     path: '/404',

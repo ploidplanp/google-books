@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-5 text-center">
     <h1>404</h1>
     <p><i>O OH, THE PAGE YOU REQUEST WAS NOT FOUND :'(</i></p>
   </div>

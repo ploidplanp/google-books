@@ -5,19 +5,19 @@
       <input v-model="inputtext" type="text" class="form-control">
       <span class="input-group-text">🔍</span>
     </div>
-    <BookItem :search="inputtext" />
+    <book-list :search="inputtext" />
   </div>
 </template>
 
 <script>
 import FavButton from '../components/FavButton'
-import BookItem from '../components/BookItem'
+import BookList from '../components/BookList'
 
 export default {
   name: 'Home',
   components: {
     FavButton,
-    BookItem
+    BookList
   },
   data () {
     return {
