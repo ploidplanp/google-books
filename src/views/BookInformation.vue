@@ -1,20 +1,20 @@
 <template>
   <div class="container mt-5">
-    <span><back-home-button/><fav-button/></span>
+    <span><back-button/><fav-button/></span>
     <h5>{{ params }}</h5>
     <book-detail :book_id="params" />
   </div>
 </template>
 
 <script>
-import BackHomeButton from '../components/BackHomeButton'
-import FavButton from '../components/FavButton'
+import BackButton from '../components/Buttons/BackButton'
+import FavButton from '../components/Buttons/FavButton'
 import BookDetail from '../components/BookDetail'
 
 export default {
   name: "BookInformation",
   components: {
-    BackHomeButton,
+    BackButton,
     FavButton,
     BookDetail
   },

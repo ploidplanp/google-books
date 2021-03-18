@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="data.length" class="row mt-5" >
+    <div class="row mt-5" >
         <div class="col-lg-3 col-md-5 col-sm-12 text-center">
           <img :src="data.volumeInfo.imageLinks.smallThumbnail" alt="">
         </div>
@@ -21,9 +21,6 @@
           <a :href="data.volumeInfo.previewLink" class="btn" id="btn-preview" target="_blank">Preview</a>
         </div>
     </div>
-    <div v-else class="jumbotron mt-5 text-center">
-      <p>the book which id {{ id }} does not exist</p>
-    </div>
   </div>
 </template>
 
@@ -39,7 +36,6 @@ export default {
       return {
         data: {},
         id: this.$props.book_id,
-        urlTest: 'https://books.google.co.th/books?id=6mR_zQEACAAJ&dq=flowers&hl=th&cd=1&source=gbs_api',
       }
   },
   created () {
@@ -54,10 +50,6 @@ export default {
 <style scope>
 img {
     width: 50%;
-}
-
-.jubbotron {
-  background-color: tomato;
 }
 
 #btn-language, #btn-page, #btn-add, #btn-preview {

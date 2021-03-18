@@ -1,19 +1,19 @@
 <template>
   <div class="container mt-5">
-    <back-home-button/>
+    <back-button/>
     <h2 class="mt-5">My Favorite</h2>
     <favorite-item />
   </div>
 </template>
 
 <script>
-import BackHomeButton from '../components/BackHomeButton'
-import FavoriteItem from '../components/FavoriteItem'
+import BackButton from '../components/Buttons/BackButton'
+import FavoriteItem from '../components/Buttons/FavButton'
 
 export default {
   components: {
-    BackHomeButton,
-    FavoriteItem,
+    BackButton,
+    FavoriteItem
   },
   name: "MyFavorite",
 };

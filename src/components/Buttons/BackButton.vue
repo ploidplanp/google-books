@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="btn btn-outline-secondary" @click="goToHome">❮ Back</button>
+    <button class="btn btn-outline-secondary" @click="goPrevious">❮ Back</button>
     <br>
   </div>
 </template>
@@ -8,10 +8,10 @@
 <script>
 
 export default {
-  name: 'BackHomeButton',
+  name: 'BackButton',
   methods: {
-    goToHome() {
-      this.$router.push('/')
+    goPrevious() {
+      this.$router.go(-1)
     }
   }
 };

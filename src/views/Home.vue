@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import FavButton from '../components/FavButton'
+import FavButton from '../components/Buttons/FavButton'
 import BookList from '../components/BookList'
 
 export default {
