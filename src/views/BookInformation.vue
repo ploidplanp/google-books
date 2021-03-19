@@ -1,7 +1,6 @@
 <template>
   <div class="container mt-5">
     <span><back-button/><fav-button/></span>
-    <h5>{{ params }}</h5>
     <book-detail :book_id="params" />
   </div>
 </template>

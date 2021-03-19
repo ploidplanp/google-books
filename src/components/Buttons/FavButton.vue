@@ -11,6 +11,7 @@ export default {
   name: 'FavButton',
   methods: {
     goToFav() {
+      // go to /fav path (MyFavorite)
       this.$router.push('/fav')
     }
   }

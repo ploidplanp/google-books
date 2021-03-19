@@ -17,7 +17,7 @@
 
           <button type="button" class="btn" id="btn-language">{{ data.volumeInfo.language }}</button>
           <button type="button" class="btn" id="btn-page">{{ data.volumeInfo.pageCount}} pages</button>
-          <button type="button" class="btn" id="btn-add">♥ Add to Favorite</button>
+          <button @click="addFavorite(data)" class="btn" id="btn-add">♥ Add to Favorite</button>
           <a :href="data.volumeInfo.previewLink" class="btn" id="btn-preview" target="_blank">Preview</a>
         </div>
     </div>
@@ -26,6 +26,7 @@
 
 <script>
 import { fetchDetail } from '../api/index'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Information',
@@ -36,13 +37,24 @@ export default {
       return {
         data: {},
         id: this.$props.book_id,
+        favorites: this.$store.state.favorites
       }
+  },
+  methods: {
+    ...mapActions([
+      'addFavorite'
+    ]),
   },
   created () {
     fetchDetail(this.$props.book_id).then((res) => {
       this.data = res.data
-      console.log(this.data)
+      console.log('fetch detail: ', this.data)
     }).catch(error => console.log(error))
+  },
+  watch: {
+    favorites() {
+      console.log('test log favorite:', this.$store.state.favorites)
+    }
   }
 };
 </script>

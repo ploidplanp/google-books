@@ -11,6 +11,7 @@ export default {
   name: 'BackButton',
   methods: {
     goPrevious() {
+      // go to previous page
       this.$router.go(-1)
     }
   }

@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # Secret Key
 src/api/key.js
+
+# Dummy Data
+src/data/dummy-dat.json

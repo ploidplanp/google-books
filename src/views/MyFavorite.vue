@@ -2,13 +2,13 @@
   <div class="container mt-5">
     <back-button/>
     <h2 class="mt-5">My Favorite</h2>
-    <favorite-item />
+    <favorite-item v-for="(myfav, index) in $store.state.favorites" :favDetail="myfav" :key="index" />
   </div>
 </template>
 
 <script>
 import BackButton from '../components/Buttons/BackButton'
-import FavoriteItem from '../components/Buttons/FavButton'
+import FavoriteItem from '../components/FavoriteItem'
 
 export default {
   components: {

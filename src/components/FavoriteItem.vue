@@ -1,27 +1,39 @@
 <template>
-  <div>
-    <div class="card col-lg-3 mt-3">
-      <img class="card-img-top" :src="imgTest" alt="Card image cap">
+  <div class="row mt-5">
+    <div v-for="(fav, index) in $store.state.favorites" :key="index" class="card col-lg-3 col-md-4 mt-3">
       <div class="card-body">
-        <h5 class="card-title">A Panda Bear's Board Game</h5>
-        <p class="card-text">Ailuropoda Melanoleuca</p>
-        <button type="button" class="btn btn-danger">Remove</button>
+        <img class="card-img-top" :src="fav.volumeInfo.imageLinks.smallThumbnail" alt="Card image cap">
+        <h5 class="card-title my-fav-title" @click="goToBookInfoID(fav.id)">{{ fav.volumeInfo.title }}</h5>
+        <p class="card-text">{{ fav.volumeInfo.subtitle}}</p>
+        <button @click.prevent="removeFavorite(index)" class="btn btn-danger">Remove</button>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex'
 
 export default {
   name: 'FavoriteItem',
-  data () {
-      return {
-          imgTest: 'http://books.google.com/books/content?id=1-JFDXinJ_kC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'
+  props: {
+    favDetail: Object,
+    index: String
+  },
+    methods: {
+      ...mapActions([
+        'removeFavorite'
+      ]),
+      goToBookInfoID(fav_id) {
+        this.$router.push(`/book-info/${fav_id}`)
       }
-  }
+  },
 };
 </script>
 
 <style scope>
+.my-fav-title:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
 </style>
