@@ -43,7 +43,7 @@ export default {
       inputtext: '',
       filtertype: '',
       printtype: '',
-      orderBy: ''
+      orderBy: 'relevance'
     }
   },
   methods: {

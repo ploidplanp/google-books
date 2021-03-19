@@ -40,11 +40,11 @@ export default {
   },
   updated() {
     if(this.$props.search != '' && (this.$props.filterFilterType == '' && this.$props.filterPrintType == '')) {
-      fetchSearch(this.$props.search).then((res) => {
+      fetchSearch(this.$props.search, this.$props.orderBy).then((res) => {
         this.data = res.data.items
       }).catch(error => console.log(error))
     }else {
-      fetchFilter(this.$props.search, this.$props.filterFilterType, this.$props.filterPrintType).then((res) => {
+      fetchFilter(this.$props.search, this.$props.filterFilterType, this.$props.filterPrintType, this.$props.orderBy).then((res) => {
         this.data = res.data.items
       }).catch(error => console.log(error))
     }

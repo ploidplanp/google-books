@@ -4,9 +4,9 @@ import { key } from './key'
 let yourAPIKey = key.API_KEY
 
 // search
-function fetchSearch(search) {
+function fetchSearch(search, orderby) {
     if(search != '') {
-        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&key=${yourAPIKey}`).catch(error => { console.log(error)})
+        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&orderBy=${orderby}&key=${yourAPIKey}`).catch(error => { console.log(error)})
         return result
     }else {
         console.log('no data')
@@ -14,18 +14,18 @@ function fetchSearch(search) {
 }
 
 // filter apply
-function fetchFilter(search, filtertype, printtype) {
+function fetchFilter(search, filtertype, printtype, orderby) {
     if(search != '' && filtertype != '' && printtype != '') {
         // searh and select both # filtertype, printtype
-        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&filter=${filtertype}&printtype=${printtype}&key=${yourAPIKey}`).catch(error => { console.log(error)})
+        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&filter=${filtertype}&printtype=${printtype}&orderBy=${orderby}&key=${yourAPIKey}`).catch(error => { console.log(error)})
         return result
     } else if (search != '' && filtertype != '') {
         // searh and select filtertype only
-        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&filter=${filtertype}&key=${yourAPIKey}`).catch(error => { console.log(error)})
+        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&filter=${filtertype}&orderBy=${orderby}&key=${yourAPIKey}`).catch(error => { console.log(error)})
         return result
     } else if (search != printtype != '') {
         // search and select printtype only
-        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&printtype=${printtype}&key=${yourAPIKey}`).catch(error => { console.log(error)})
+        let result = axios.get(`https://www.googleapis.com/books/v1/volumes?q=${search}&printtype=${printtype}&orderBy=${orderby}&key=${yourAPIKey}`).catch(error => { console.log(error)})
         return result
     }
 }
