@@ -46,6 +46,7 @@ export default {
     ]),
   },
   created () {
+    // fetch book detail ; called fetchDetail from api
     fetchDetail(this.$props.book_id).then((res) => {
       this.data = res.data
       console.log('fetch detail: ', this.data)

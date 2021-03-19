@@ -19,7 +19,7 @@ export default new Vuex.Store({
                 // don't axist ---> push to state.favorite
                 state.favorites.push(payload)
             } else {
-                // console.log('already axist')
+                // axist ---> may be you want to do s'th
             }
         },
         removeFavorite(state, payload) {

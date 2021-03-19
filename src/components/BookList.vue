@@ -8,7 +8,6 @@
             <div class="card-body">
               <h5 class="card-title my-book-title" @click="goToBookInfoID(book.id)">{{book.volumeInfo.title}}</h5>
               <p class="card-text">{{book.volumeInfo.subtitle}}</p>
-              
               </div>
             </div>
         </div>
@@ -30,16 +29,17 @@ export default {
       }
   },
   methods: {
+    // go to path /book-info/:id to view book information
     goToBookInfoID(book_id) {
       this.$router.push(`/book-info/${book_id}`)
     }
   },
   updated() {
-      if(this.$props.search != '') {
-        fetchSearch(this.$props.search).then((res) => {
-          this.data = res.data.items
-        }).catch(error => console.log(error))
-      }
+    if(this.$props.search != '') {
+      fetchSearch(this.$props.search).then((res) => {
+        this.data = res.data.items
+      }).catch(error => console.log(error))
+    }
   }
 };
 </script>
