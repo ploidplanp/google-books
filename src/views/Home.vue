@@ -1,16 +1,14 @@
 <template>
   <div class="container mt-5">
-    <div class="row">
-      <div class="col-lg-3 col-md-5 col-sm-12">
-        <my-form @filtertype="applyFilterType" @printtype="applyPrintType"/>
-      </div>
-      <div class="col-lg-9 col-md-7 col-sm-12">
-        <fav-button />
+    
+    <!-- toggle filter === false (default) -->
+    <div v-if="isToggleFilter === false">
+      <fav-button />
         <div class="input-group mt-5">
           <input v-model="inputtext" type="text" class="form-control">
           <span class="input-group-text">🔍</span>
         </div>
-        <button class="btn btn-light mt-3">Filter</button>
+        <button @click="toggleFilter" class="btn btn-light mt-3">Filter</button>
 
         <div class="my-btn-group mt-3">
           <select v-model="orderby"  class="form-select-sm" aria-label=".form-select-sm example">
@@ -24,9 +22,39 @@
         <h3 class="invisible">{{ orderby }}</h3>
         <!-- show book list from search and filter -->
         <book-list :search="inputtext" :filterFilterType="filtertype" :filterPrintType="printtype" :orderBy="orderby" :viewBy="viewby" />
-      </div>
+    </div>
+
+    <!-- toggle filter === true -->
+    <div v-if="isToggleFilter">
+      <div class="row">
+        <div class="col-lg-3 col-md-5 col-sm-12">
+          <my-form @filtertype="applyFilterType" @printtype="applyPrintType"/>
+        </div>
+        <div class="col-lg-9 col-md-7 col-sm-12">
+          <fav-button />
+          <div class="input-group mt-5">
+            <input v-model="inputtext" type="text" class="form-control">
+            <span class="input-group-text">🔍</span>
+          </div>
+          <button @click="toggleFilter" class="btn btn-light mt-3">Filter</button>
+
+          <div class="my-btn-group mt-3">
+            <select v-model="orderby"  class="form-select-sm" aria-label=".form-select-sm example">
+              <option value="relevance">Relevance</option>
+              <option value="newest">Newest</option>
+            </select>
+            <button @click="viewGrid" class="btn btn-light">Grid</button>
+            <button @click="viewList" class="btn btn-light">List</button>
+          </div>
+          <h3 class="invisible">{{ viewby }}</h3>
+          <h3 class="invisible">{{ orderby }}</h3>
+          <!-- show book list from search and filter -->
+          <book-list :search="inputtext" :filterFilterType="filtertype" :filterPrintType="printtype" :orderBy="orderby" :viewBy="viewby" />
+        </div>
       </div>
     </div>
+
+  </div>
 </template>
 
 <script>
@@ -48,7 +76,7 @@ export default {
       printtype: '',
       orderby: 'relevance',
       viewby: 'grid',
-      toggleFilter: true
+      isToggleFilter: false
     }
   },
   methods: {
@@ -63,6 +91,9 @@ export default {
     },
     viewList() {
       this.viewby = 'list'
+    },
+    toggleFilter() {
+      this.isToggleFilter = !this.isToggleFilter
     }
   }
 };
