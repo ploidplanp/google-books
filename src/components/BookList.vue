@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 class="invisible">{{search}}</h1>
+    <p>{{ this.$props.filterFilterType }} {{ this.$props.filterPrintType }}</p>
     <div v-if="data.length" class="row mt-5" >
         <div v-for="(book, key, index) in data" :key="index" class="col-lg-3 mt-3">
           <div class="card">
@@ -16,12 +17,15 @@
 </template>
 
 <script>
-import { fetchSearch } from '../api'
+import { fetchSearch, fetchFilter } from '../api'
 
 export default {
   name: 'BookItem',
   props: {
-      search: String
+      search: String,
+      filterFilterType: String,
+      filterPrintType: String,
+      orderBy: String
   },
   data() {
       return {
@@ -35,8 +39,12 @@ export default {
     }
   },
   updated() {
-    if(this.$props.search != '') {
+    if(this.$props.search != '' && (this.$props.filterFilterType == '' && this.$props.filterPrintType == '')) {
       fetchSearch(this.$props.search).then((res) => {
+        this.data = res.data.items
+      }).catch(error => console.log(error))
+    }else {
+      fetchFilter(this.$props.search, this.$props.filterFilterType, this.$props.filterPrintType).then((res) => {
         this.data = res.data.items
       }).catch(error => console.log(error))
     }

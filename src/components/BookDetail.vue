@@ -12,13 +12,13 @@
             <li v-for="(author, index) in data.volumeInfo.authors" :key="index">{{ author }}</li>
           </ul>
           <p class="card-text text-muted"><i>Description:</i><br>{{ data.volumeInfo.description }}</p>
-          <p class="card-text text-muted">Published Date: {{ data.volumeInfo.publishedDate }}</p>
+          <p v-if="data.volumeInfo.publishedDate" class="card-text text-muted">Published Date: {{ data.volumeInfo.publishedDate }}</p>
           
 
-          <button type="button" class="btn" id="btn-language">{{ data.volumeInfo.language }}</button>
-          <button type="button" class="btn" id="btn-page">{{ data.volumeInfo.pageCount}} pages</button>
-          <button @click="addFavorite(data)" class="btn" id="btn-add">♥ Add to Favorite</button>
-          <a :href="data.volumeInfo.previewLink" class="btn" id="btn-preview" target="_blank">Preview</a>
+          <button v-if="data.volumeInfo.language" type="button" class="btn" id="btn-language">{{ data.volumeInfo.language }}</button>
+          <button v-if="data.volumeInfo.pageCount" type="button" class="btn" id="btn-page">{{ data.volumeInfo.pageCount}} pages</button>
+          <button v-if="data.volumeInfo.previewLink" @click="addFavorite(data)" class="btn" id="btn-add">♥ Add to Favorite</button>
+          <a v-if="data.volumeInfo.previewLink" :href="data.volumeInfo.previewLink" class="btn" id="btn-preview" target="_blank">Preview</a>
         </div>
     </div>
   </div>
@@ -50,7 +50,20 @@ export default {
     fetchDetail(this.$props.book_id).then((res) => {
       this.data = res.data
       console.log('fetch detail: ', this.data)
-    }).catch(error => console.log(error))
+    }).catch(error => {
+      console.log(error)
+      this.data = {
+        volumeInfo: {
+        title: '404',
+        subtitle: 'not found this id',
+        authors: ['admin ploidplanp'],
+        description: 'please try another id',
+        imageLinks: {
+          smallThumbnail: 'https://i.redd.it/e2l5yw6ad2a21.jpg'
+          }
+        }
+      }
+    })
   },
   watch: {
     favorites() {
