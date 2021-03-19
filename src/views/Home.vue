@@ -11,16 +11,17 @@
           <span class="input-group-text">🔍</span>
         </div>
         <div class="my-btn-group mt-3">
-          <select v-model="orderBy"  class="form-select-sm" aria-label=".form-select-sm example">
+          <select v-model="orderby"  class="form-select-sm" aria-label=".form-select-sm example">
             <option value="relevance">Relevance</option>
             <option value="newest">Newest</option>
           </select>
-          <button class="btn btn-light">Grid</button>
-          <button class="btn btn-light">List</button>
+          <button @click="viewGrid" class="btn btn-light">Grid</button>
+          <button @click="viewList" class="btn btn-light">List</button>
         </div>
-        <h3>{{ orderBy }}</h3>
+        <h3 class="visible">{{ viewby }}</h3>
+        <h3 class="visible">{{ orderby }}</h3>
         <!-- show book list from search and filter -->
-        <book-list :search="inputtext" :filterFilterType="filtertype" :filterPrintType="printtype" :orderBy="orderBy" />
+        <book-list :search="inputtext" :filterFilterType="filtertype" :filterPrintType="printtype" :orderBy="orderby" :viewBy="viewby" />
       </div>
       </div>
     </div>
@@ -43,7 +44,8 @@ export default {
       inputtext: '',
       filtertype: '',
       printtype: '',
-      orderBy: 'relevance'
+      orderby: 'relevance',
+      viewby: 'grid',
     }
   },
   methods: {
@@ -52,6 +54,12 @@ export default {
     },
     applyPrintType(value) {
       this.printtype = value
+    },
+    viewGrid() {
+      this.viewby = 'grid'
+    },
+    viewList() {
+      this.viewby = 'list'
     }
   }
 };
