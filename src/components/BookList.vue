@@ -1,8 +1,8 @@
 <template>
   <div>
     <h1 class="invisible">{{search}}</h1>
-    <p>{{ this.$props.filterFilterType }} {{ this.$props.filterPrintType }}</p>
-    <hr>
+    <!-- <p class="invisible">{{ this.$props.filterFilterType }} {{ this.$props.filterPrintType }}</p> -->
+    
     <!-- view as grid -->
     <div v-if="data.length && this.$props.viewBy == 'grid'" class="row mt-5" >
         <div v-for="(book, key, index) in data" :key="index" class="col-lg-3 mt-3">
@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    
+
     <!-- view as list -->
     <!-- <div v-if="data.length && this.props.viewBy == 'list'">
       <div v-for="(book, key, index) in data" :key="index">
