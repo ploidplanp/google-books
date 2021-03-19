@@ -16,17 +16,13 @@ import { mapActions } from 'vuex'
 
 export default {
   name: 'FavoriteItem',
-  props: {
-    favDetail: Object,
-    index: String
-  },
-    methods: {
-      ...mapActions([
-        'removeFavorite'
-      ]),
-      goToBookInfoID(fav_id) {
-        this.$router.push(`/book-info/${fav_id}`)
-      }
+  methods: {
+    ...mapActions([
+      'removeFavorite'
+    ]),
+    goToBookInfoID(fav_id) {
+      this.$router.push(`/book-info/${fav_id}`)
+    },
   },
 };
 </script>

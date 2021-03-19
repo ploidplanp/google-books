@@ -2,7 +2,7 @@
   <div class="container mt-5">
     <back-button/>
     <h2 class="mt-5">My Favorite</h2>
-    <favorite-item v-for="(myfav, index) in $store.state.favorites" :favDetail="myfav" :key="index" />
+    <favorite-item  />
   </div>
 </template>
 

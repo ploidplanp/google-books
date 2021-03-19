@@ -9,23 +9,18 @@ export default new Vuex.Store({
     },
     mutations: {
         addFavorite(state, payload) {
-            console.log('fav: ', state.favorites)
-            console.log('payload: ', payload)
-            // if(!state.favorites.some(data => data.id === payload.id)){
-            //     // don't exists ---> push to favaorites
-            //     // state.favorites.push(payload)
-            //     console.log('payload: ', payload)
-            //     console.log('test: ', state.favorites.push({...payload}))
-            //     // state.favorites.push({...payload})
-            // } else {
-            //     // exist
-            // }
-
-            // const new_fav = state.favorites.find(data => data.id === payload.id)
-            // console.log('new fav: ', new_fav)
-            // if(new_fav){
-            //     console.log(state.favorites.push(payload))
-            // }
+            const selectedId = payload.id
+            const check = state.favorites.findIndex(book => {
+                // is book.id == selectedId
+                return book.id == selectedId
+            })
+            console.log('check: ', check)
+            if (check === -1) {
+                // don't axist ---> push to state.favorite
+                state.favorites.push(payload)
+            } else {
+                // console.log('already axist')
+            }
         },
         removeFavorite(state, payload) {
             state.favorites.splice(payload, 1)
